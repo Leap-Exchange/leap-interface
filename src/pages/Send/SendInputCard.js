@@ -20,7 +20,7 @@ const SendInputCard = (props) => {
       justifyContent="center"
       sx={{ p: 3, bgcolor: "secondary.main" }}
     >
-      <Grid item sx={{ p: 3, bgcolor: "warning.main", width: "35rem" }}>
+      <Grid item sx={{ p: 3, bgcolor: "warning.main", width: 600 }}>
         <Paper
           elevation={3}
           sx={{ borderRadius: 6, bgcolor: "primary.main", p: 3 }}

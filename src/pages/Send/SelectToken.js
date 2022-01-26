@@ -17,12 +17,19 @@ import SimpleModal from "components/UI/Modal/SimpleModal";
 const tokenObject = require("../../Tokenlist.json");
 const tokenList = tokenObject.tokens;
 
+function returnUID(address, chainID) {
+  return `${address}_${chainID}`;
+}
+
 function modalContent(tokenList) {
   return (
     <List sx={{ maxHeight: 500, overflow: "auto" }}>
       {tokenList.map((token) => {
         return (
-          <ListItem disablePadding>
+          <ListItem
+            disablePadding
+            key={returnUID(token.address, token.chainId)}
+          >
             <ListItemButton>
               <ListItemIcon>
                 <MKAvatar src={token.logoURI} size="sm" />

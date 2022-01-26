@@ -10,6 +10,8 @@ import Header from "components/Header/Header";
 import Send from "pages/Send/Send";
 
 function App() {
+  console.log(theme.typography);
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />

@@ -16,18 +16,18 @@ const Header = (props) => {
   return (
     <MKBox display="flex" sx={{ px: 5, py: 3, bgcolor: "success.main" }}>
       <Grid container>
-        <Grid item xs={3} sx={{ bgcolor: "secondary.main" }}>
+        <Grid item xs={4} sx={{ bgcolor: "secondary.main" }}>
           <ColorThemeButton />
           <SettingsButton />
         </Grid>
-        <Grid item display="flex" xs={6} sx={{ bgcolor: "warning.main" }}>
+        <Grid item display="flex" xs={4} sx={{ bgcolor: "warning.main" }}>
           <HeaderNav />
         </Grid>
         <Grid
           item
           display="flex"
           justifyContent="flex-end"
-          xs={3}
+          xs={4}
           sx={{ bgcolor: "secondary.main" }}
         >
           <AccountButton />

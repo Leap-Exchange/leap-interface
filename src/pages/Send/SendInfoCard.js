@@ -10,7 +10,7 @@ const SendInfoCard = (props) => {
       justifyContent="center"
       sx={{ p: 3, py: 0, bgcolor: "secondary.main" }}
     >
-      <Grid item xs={8} sx={{ p: 3, pb: 1, bgcolor: "warning.main" }}>
+      <Grid item xs={4} sx={{ p: 3, pb: 1, bgcolor: "warning.main" }}>
         <Grid
           item
           display="flex"

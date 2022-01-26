@@ -5,9 +5,8 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import Divider from "@mui/material/Divider";
-import InboxIcon from "@mui/icons-material/Inbox";
 import DraftsIcon from "@mui/icons-material/Drafts";
+import MKAvatar from "components/MKAvatar";
 
 // Mui Imports
 import { Grid } from "@mui/material";
@@ -20,13 +19,13 @@ const tokenList = tokenObject.tokens;
 
 function modalContent(tokenList) {
   return (
-    <List sx={{ maxHeight: 1, overflow: "auto" }}>
+    <List sx={{ maxHeight: 500, overflow: "auto" }}>
       {tokenList.map((token) => {
         return (
           <ListItem disablePadding>
             <ListItemButton>
               <ListItemIcon>
-                <DraftsIcon />
+                <MKAvatar src={token.logoURI} size="sm" />
               </ListItemIcon>
               <ListItemText primary={token.name} />
             </ListItemButton>

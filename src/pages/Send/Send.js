@@ -31,12 +31,12 @@ const Send = () => {
         justifyContent="center"
         sx={{ p: 3, py: 0, bgcolor: "secondary.main" }}
       >
-        <Grid item xs={8} sx={{ bgcolor: "warning.main" }}>
+        <Grid item sx={{ bgcolor: "warning.main", maxWidth: "md" }}>
           <Grid
             item
             display="flex"
             sx={{
-              bgcolor: "secondary.main",
+              bgcolor: "success.main",
               p: 1,
               justifyContent: "space-evenly",
             }}

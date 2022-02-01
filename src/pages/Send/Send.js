@@ -14,35 +14,28 @@ import SelectToken from "./SelectToken";
 
 const Send = () => {
   return (
-    <MKBox
-      display="flex"
-      bgColor="warning"
-      flexDirection="column"
-      justifyContent="center"
-      sx={{ p: 3 }}
-    >
+    <MKBox display="flex" flexDirection="column" justifyContent="center">
       <SelectToken />
       <SendInputCard id="Source" />
       <SendInputCard id="Destination" />
       <SendInfoCard />
 
-      <Grid
-        container
-        justifyContent="center"
-        sx={{ p: 3, py: 0, bgcolor: "secondary.main" }}
-      >
-        <Grid item sx={{ bgcolor: "warning.main", maxWidth: "md" }}>
+      <Grid container justifyContent="center">
+        <Grid item sx={{ maxWidth: "md" }}>
           <Grid
             item
             display="flex"
             sx={{
-              bgcolor: "success.main",
-              p: 1,
+              p: 3,
               justifyContent: "space-evenly",
             }}
           >
-            <MKButton>Approve</MKButton>
-            <MKButton>Submit</MKButton>
+            <MKButton color="primary" size="large" sx={{ width: 120, mx: 4 }}>
+              Approve
+            </MKButton>
+            <MKButton color="primary" size="large" sx={{ width: 120, mx: 4 }}>
+              Submit
+            </MKButton>
           </Grid>
         </Grid>
       </Grid>

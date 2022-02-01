@@ -1,14 +1,12 @@
 import { useState, Fragment } from "react";
 
-// @mui material components
+// Mui Imports
 import Modal from "@mui/material/Modal";
 import Divider from "@mui/material/Divider";
 import Slide from "@mui/material/Slide";
-
-// @mui icons
 import CloseIcon from "@mui/icons-material/Close";
 
-// Material Kit 2 React components
+// Material Kit Imports
 import MKBox from "components/MKBox";
 import MKButton from "components/MKButton";
 import MKTypography from "components/MKTypography";
@@ -17,7 +15,7 @@ const SimpleModal = (props) => {
   const [show, setShow] = useState(false);
   const toggleModal = () => setShow((prevState) => !prevState);
 
-  const { label, modalTitle, modalContent } = props;
+  const { label, modalTitle, modalHeader, modalContent } = props;
 
   return (
     <Fragment>
@@ -32,7 +30,8 @@ const SimpleModal = (props) => {
         <Slide direction="down" in={show} timeout={500}>
           <MKBox
             position="relative"
-            width="500px"
+            width={1}
+            maxWidth="500px"
             display="flex"
             flexDirection="column"
             borderRadius="xl"
@@ -52,6 +51,12 @@ const SimpleModal = (props) => {
                 onClick={toggleModal}
               />
             </MKBox>
+            {modalHeader ? (
+              <Fragment>
+                <Divider sx={{ my: 0 }} />
+                <MKBox p={2}>{modalHeader}</MKBox>
+              </Fragment>
+            ) : null}
             <Divider sx={{ my: 0 }} />
             <MKBox p={2}>{modalContent}</MKBox>
             <Divider sx={{ my: 0 }} />

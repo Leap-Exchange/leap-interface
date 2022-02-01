@@ -33,7 +33,7 @@ export default {
   padding: `${pxToRem(6.302)} ${pxToRem(16.604)}`,
   lineHeight: 1.4,
   textAlign: "center",
-  textTransform: "uppercase",
+  textTransform: "none",
   userSelect: "none",
   backgroundSize: "150% !important",
   backgroundPositionX: "25% !important",

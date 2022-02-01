@@ -1,4 +1,4 @@
-import React from "react";
+import { Fragment } from "react";
 
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
@@ -9,7 +9,10 @@ import DraftsIcon from "@mui/icons-material/Drafts";
 import MKAvatar from "components/MKAvatar";
 
 // Mui Imports
-import { Grid } from "@mui/material";
+import { Grid, Divider } from "@mui/material";
+
+// Material Kit Imports
+import MKInput from "components/MKInput/index";
 
 // Custom Component Imports
 import SimpleModal from "components/UI/Modal/SimpleModal";
@@ -21,9 +24,9 @@ function returnUID(address, chainID) {
   return `${address}_${chainID}`;
 }
 
-function modalContent(tokenList) {
+function returnModalContent(tokenList) {
   return (
-    <List sx={{ maxHeight: 500, overflow: "auto" }}>
+    <List sx={{ maxHeight: 400, overflow: "auto" }}>
       {tokenList.map((token) => {
         return (
           <ListItem
@@ -43,19 +46,18 @@ function modalContent(tokenList) {
   );
 }
 
+function returnModalHeader() {
+  return <MKInput type="search" label="Search Tokens" fullWidth />;
+}
+
 const SelectToken = (props) => {
   return (
-    <Grid
-      container
-      justifyContent="center"
-      sx={{ p: 3, py: 0, bgcolor: "secondary.main" }}
-    >
-      <Grid item xs={8} sx={{ bgcolor: "warning.main" }}>
+    <Grid container justifyContent="center" sx={{ pt: 1 }}>
+      <Grid item>
         <Grid
           item
           display="flex"
           sx={{
-            bgcolor: "secondary.main",
             p: 1,
             justifyContent: "space-evenly",
           }}
@@ -63,7 +65,8 @@ const SelectToken = (props) => {
           <SimpleModal
             label="Select Token"
             modalTitle="Select a Token"
-            modalContent={modalContent(tokenList)}
+            modalHeader={returnModalHeader()}
+            modalContent={returnModalContent(tokenList)}
           />
         </Grid>
       </Grid>

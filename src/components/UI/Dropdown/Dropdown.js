@@ -30,7 +30,12 @@ const Dropdown = (props) => {
 
   return (
     <Fragment>
-      <MKButton variant="gradient" color="primary" onClick={openDropdown}>
+      <MKButton
+        variant="outlined"
+        color="primary"
+        onClick={openDropdown}
+        sx={{ overflow: "hidden" }}
+      >
         {label}
         <ExpandMoreIcon sx={dropdownIconStyles} />
       </MKButton>

@@ -5,33 +5,28 @@ import MKBox from "components/MKBox";
 
 // Mui Imports
 import Grid from "@mui/material/Grid";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { useTheme } from "@mui/material/styles";
 
 // Custom Component Imports
 import HeaderNav from "./HeaderNav";
 import AccountButton from "./AccountButton";
-import ColorThemeButton from "./ColorThemeButton";
-import SettingsButton from "./SettingsButton";
+import Settings from "./Settings";
 
 const Header = (props) => {
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+  console.log(isSmallScreen);
   return (
-    <MKBox display="flex" sx={{ px: 5, py: 3, bgcolor: "success.main" }}>
+    <MKBox display="flex" sx={{ p: 5, py: 2 }}>
       <Grid container>
-        <Grid item xs={4} sx={{ bgcolor: "secondary.main" }}>
-          <ColorThemeButton />
-          <SettingsButton />
-        </Grid>
-        <Grid item display="flex" xs={4} sx={{ bgcolor: "warning.main" }}>
-          <HeaderNav />
-        </Grid>
-        <Grid
-          item
-          display="flex"
-          justifyContent="flex-end"
-          xs={4}
-          sx={{ bgcolor: "secondary.main" }}
-        >
-          <AccountButton />
-        </Grid>
+        {!isSmallScreen && <Settings isSmallScreen={isSmallScreen} />}
+
+        <HeaderNav isSmallScreen={isSmallScreen} />
+
+        {isSmallScreen && <Settings isSmallScreen={isSmallScreen} />}
+
+        <AccountButton isSmallScreen={isSmallScreen} />
       </Grid>
     </MKBox>
   );

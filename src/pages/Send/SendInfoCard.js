@@ -5,17 +5,12 @@ import { Grid, Typography } from "@mui/material";
 
 const SendInfoCard = (props) => {
   return (
-    <Grid
-      container
-      justifyContent="center"
-      sx={{ p: 3, py: 0, bgcolor: "secondary.main" }}
-    >
-      <Grid item sx={{ p: 3, pb: 1, bgcolor: "warning.main", width: 600 }}>
+    <Grid container justifyContent="center">
+      <Grid item sx={{ p: 3, pb: 1, width: 600 }}>
         <Grid
           item
           display="flex"
           sx={{
-            bgcolor: "secondary.main",
             p: 1,
             px: 5,
             mb: 3,
@@ -31,7 +26,6 @@ const SendInfoCard = (props) => {
           item
           display="flex"
           sx={{
-            bgcolor: "secondary.main",
             p: 1,
             px: 5,
             mb: 2,

@@ -4,34 +4,29 @@ import React from "react";
 import { Grid, Typography } from "@mui/material";
 
 const SendInfoCard = (props) => {
+  const styles = {
+    gridItem: {
+      p: 3,
+      pb: 1,
+      width: 600,
+    },
+    textGrid: {
+      p: 1,
+      px: 5,
+      mb: 2,
+      justifyContent: "space-between",
+    },
+  };
   return (
     <Grid container justifyContent="center">
-      <Grid item sx={{ p: 3, pb: 1, width: 600 }}>
-        <Grid
-          item
-          display="flex"
-          sx={{
-            p: 1,
-            px: 5,
-            mb: 3,
-            justifyContent: "space-between",
-          }}
-        >
+      <Grid item sx={styles.gridItem}>
+        <Grid item display="flex" sx={styles.textGrid}>
           <Typography display="inline-flex">Fees:</Typography>
           <Typography display="inline-flex" sx={{ textAlign: "right" }}>
             xxxxxx
           </Typography>
         </Grid>
-        <Grid
-          item
-          display="flex"
-          sx={{
-            p: 1,
-            px: 5,
-            mb: 2,
-            justifyContent: "space-between",
-          }}
-        >
+        <Grid item display="flex" sx={styles.textGrid}>
           <Typography display="inline-flex">Estimated Received</Typography>
           <Typography display="inline-flex" sx={{ textAlign: "right" }}>
             xxxxxx

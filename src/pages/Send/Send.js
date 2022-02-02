@@ -10,7 +10,7 @@ import { Grid } from "@mui/material";
 // Custom Component Imports
 import SendInputCard from "./SendInputCard";
 import SendInfoCard from "./SendInfoCard";
-import SelectToken from "./SelectToken";
+import SelectToken from "./TokenSelector/TokenSelector";
 
 const Send = () => {
   return (

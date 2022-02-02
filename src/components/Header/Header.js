@@ -16,9 +16,16 @@ import Settings from "./Settings";
 const Header = (props) => {
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
-  console.log(isSmallScreen);
+
+  const styles = {
+    root: {
+      p: 5,
+      py: 2,
+    },
+  };
+
   return (
-    <MKBox display="flex" sx={{ p: 5, py: 2 }}>
+    <MKBox display="flex" sx={styles.root}>
       <Grid container>
         {!isSmallScreen && <Settings isSmallScreen={isSmallScreen} />}
 

@@ -45,7 +45,9 @@ const Dropdown = (props) => {
         onClose={closeDropdown}
       >
         {outputLabels.map((label) => (
-          <MenuItem onClick={closeDropdown}>{label}</MenuItem>
+          <MenuItem key={Math.random()} onClick={closeDropdown}>
+            {label}
+          </MenuItem>
         ))}
       </Menu>
     </Fragment>

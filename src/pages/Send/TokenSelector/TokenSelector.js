@@ -1,42 +1,77 @@
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 
 // Mui Imports
-import { Grid } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 import MKButton from "components/MKButton";
+import MKAvatar from "components/MKAvatar";
 
 // Custom Component Imports
 import SimpleModal from "components/UI/Modal/SimpleModal";
 import ModalContent from "./ModalContent";
 import ModalHeader from "./ModalHeader";
+import { fontSize, style } from "@mui/system";
 
 const tokenObject = require("../../../Tokenlist.json");
 const tokenList = tokenObject.tokens;
 
 const SelectToken = (props) => {
   const [showModal, setShowModal] = useState(false);
+  const [selectedToken, setSelectedToken] = useState();
   const toggleModal = () => setShowModal((prevState) => !prevState);
+
+  const tokenSelectHandler = (token) => {
+    setSelectedToken(token);
+    console.log(selectedToken);
+    toggleModal();
+  };
 
   const styles = {
     root: {
       pt: 1,
     },
+    button: {
+      width: "140px",
+    },
     gridItem: {
       p: 1,
       justifyContent: "space-evenly",
     },
+    typography: {
+      mx: 2,
+    },
   };
+
   return (
     <Grid container justifyContent="center" sx={styles.root}>
       <Grid item display="flex" sx={styles.gridItem}>
-        <MKButton variant="outlined" color="primary" onClick={toggleModal}>
-          Select A Token
+        <MKButton
+          variant={selectedToken ? "gradient" : "outlined"}
+          color="primary"
+          onClick={toggleModal}
+          sx={styles.button}
+        >
+          {selectedToken ? (
+            <Fragment>
+              <MKAvatar src={selectedToken.logoURI} size="xs" />
+              <Typography variant="inherit" sx={styles.typography}>
+                {selectedToken.symbol}
+              </Typography>
+            </Fragment>
+          ) : (
+            "Select A Token"
+          )}
         </MKButton>
         <SimpleModal
           toggleModal={toggleModal}
           showModal={showModal}
           modalTitle="Select a Token"
           modalHeader={<ModalHeader />}
-          modalContent={<ModalContent tokens={tokenList} />}
+          modalContent={
+            <ModalContent
+              tokens={tokenList}
+              onTokenSelect={tokenSelectHandler}
+            />
+          }
         />
       </Grid>
     </Grid>

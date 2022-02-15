@@ -20,6 +20,7 @@ const SimpleModal = (props) => {
         open={showModal}
         onClose={toggleModal}
         sx={{ display: "grid", placeItems: "center" }}
+        keepMounted
       >
         <Slide direction="down" in={showModal} timeout={500}>
           <MKBox

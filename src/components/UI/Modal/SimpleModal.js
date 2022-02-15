@@ -12,22 +12,16 @@ import MKButton from "components/MKButton";
 import MKTypography from "components/MKTypography";
 
 const SimpleModal = (props) => {
-  const [show, setShow] = useState(false);
-  const toggleModal = () => setShow((prevState) => !prevState);
-
-  const { label, modalTitle, modalHeader, modalContent } = props;
-
+  const { toggleModal, showModal, modalTitle, modalHeader, modalContent } =
+    props;
   return (
     <Fragment>
-      <MKButton variant="gradient" color="primary" onClick={toggleModal}>
-        {label}
-      </MKButton>
       <Modal
-        open={show}
+        open={showModal}
         onClose={toggleModal}
         sx={{ display: "grid", placeItems: "center" }}
       >
-        <Slide direction="down" in={show} timeout={500}>
+        <Slide direction="down" in={showModal} timeout={500}>
           <MKBox
             position="relative"
             width={1}

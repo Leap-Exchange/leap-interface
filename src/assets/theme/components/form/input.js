@@ -26,7 +26,7 @@ export default {
   styleOverrides: {
     root: {
       fontSize: size.sm,
-      color: dark.main,
+      // color: dark.main,
 
       "&:hover:not(.Mui-disabled):before": {
         borderBottom: `${borderWidth[1]} solid ${inputBorderColor}`,

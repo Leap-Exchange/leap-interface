@@ -84,9 +84,11 @@ import dialogContent from "assets/theme/components/dialog/dialogContent";
 import dialogContentText from "assets/theme/components/dialog/dialogContentText";
 import dialogActions from "assets/theme/components/dialog/dialogActions";
 
-export default createTheme({
+const themeObj = {
   breakpoints: { ...breakpoints },
-  palette: { ...colors },
+  palette: {
+    ...colors,
+  },
   typography: { ...typography },
   boxShadows: { ...boxShadows },
   borders: { ...borders },
@@ -155,4 +157,6 @@ export default createTheme({
     MuiDialogContentText: { ...dialogContentText },
     MuiDialogActions: { ...dialogActions },
   },
-});
+};
+
+export default themeObj;

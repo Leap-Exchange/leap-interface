@@ -21,6 +21,7 @@ const Header = (props) => {
     root: {
       p: 5,
       py: 2,
+      mb: 5,
     },
   };
 

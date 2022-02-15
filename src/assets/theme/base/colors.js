@@ -20,13 +20,9 @@ Coded by www.creative-tim.com
  */
 
 export default {
-  background: {
-    default: "#f0f2f5",
-  },
-
   text: {
-    main: "#7b809a",
-    focus: "#7b809a",
+    // main: "#7b809a",
+    // focus: "#7b809a",
   },
 
   transparent: {

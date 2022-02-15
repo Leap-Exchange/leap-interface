@@ -19,19 +19,23 @@ function HeaderNav(props) {
       p: 1,
     },
     tabs: {
+      // bgcolor: "transparent.main",
+    },
+    tab: {
       bgcolor: "transparent.main",
     },
   };
   return (
     <Grid item display="flex" xs={width} sx={styles.root}>
-      <AppBar position="static">
+      <AppBar position="static" sx={styles.tab}>
         <Tabs
           value={activeTab}
           onChange={handleTabType}
           display="flex"
           sx={styles.tabs}
+          textColor="primary"
         >
-          <Tab label="Send" />
+          <Tab label="Send" sx={styles.tab} />
           <Tab label="Liquidity" />
         </Tabs>
       </AppBar>

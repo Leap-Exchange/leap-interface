@@ -21,9 +21,9 @@ import colors from "assets/theme/base/colors";
 // Material Kit 2 React helper functions
 import pxToRem from "assets/theme/functions/pxToRem";
 
-const { size, fontWeightRegular } = typography;
+const { size, fontWeightBold, fontWeightMedium } = typography;
 const { borderRadius } = borders;
-const { dark } = colors;
+const { dark, grey, white, primary, black } = colors;
 
 export default {
   styleOverrides: {
@@ -37,13 +37,18 @@ export default {
       minWidth: "unset !important",
       minHeight: "unset !important",
       fontSize: size.md,
-      fontWeight: fontWeightRegular,
+      fontWeight: fontWeightMedium,
       textTransform: "none",
       lineHeight: "inherit",
       padding: pxToRem(4),
       borderRadius: borderRadius.lg,
-      color: `${dark.main} !important`,
+      color: `${grey[600]}`,
       opacity: "1 !important",
+      transition: "all 500ms ease",
+      "&:hover": {
+        color: `${primary.main} !important`,
+        opacity: `${0.8} !important`,
+      },
 
       "& .material-icons, .material-icons-round": {
         marginBottom: "0 !important",

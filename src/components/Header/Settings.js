@@ -1,5 +1,9 @@
 import React from "react";
 
+// redux imports
+import { useSelector, useDispatch } from "react-redux";
+import { themeActions } from "Store/ThemeSlice";
+
 // Material Kit Imports
 import MKButton from "components/MKButton";
 
@@ -10,6 +14,14 @@ import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 
 const Settings = (props) => {
+  const themeMode = useSelector((state) => state.theme.mode);
+  const dispatch = useDispatch();
+
+  const toggleThemeHandler = (event) => {
+    console.log(themeMode);
+    dispatch(themeActions.toggleTheme());
+  };
+
   const width = props.isSmallScreen ? 6 : 4;
   const margin = props.isSmallScreen ? "8%" : 2;
 
@@ -18,6 +30,7 @@ const Settings = (props) => {
   return (
     <Grid item xs={width} sx={styles.root}>
       <MKButton
+        onClick={toggleThemeHandler}
         variant="text"
         color="primary"
         iconOnly

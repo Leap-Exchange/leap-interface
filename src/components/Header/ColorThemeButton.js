@@ -1,5 +1,9 @@
 import React from "react";
 
+// redux imports
+import { useSelector, useDispatch } from "react-redux";
+import { themeActions } from "Store/ThemeSlice";
+
 // Material Kit Imports
 import MKButton from "components/MKButton";
 
@@ -10,8 +14,22 @@ import DarkModeIcon from "@mui/icons-material/DarkMode";
 const LightMode = true;
 
 const ColorThemeButton = (props) => {
+  const themeMode = useSelector((state) => state.theme.lightMode);
+  const dispatch = useDispatch();
+
+  const toggleThemeHandler = (event) => {
+    console.log(themeMode);
+    console.log(themeActions);
+  };
+
   return (
-    <MKButton variant="text" color="primary" iconOnly circular>
+    <MKButton
+      onClick={toggleThemeHandler}
+      variant="text"
+      color="primary"
+      iconOnly
+      circular
+    >
       {LightMode ? <LightModeIcon /> : <DarkModeIcon />}
     </MKButton>
   );

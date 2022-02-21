@@ -3,12 +3,16 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { DAppProvider } from "@usedapp/core";
+import store from "./Store/Store";
+import { Provider } from "react-redux";
 
 ReactDOM.render(
   <React.StrictMode>
-    <DAppProvider config={{}}>
-      <App />
-    </DAppProvider>
+    <Provider store={store}>
+      <DAppProvider config={{}}>
+        <App />
+      </DAppProvider>
+    </Provider>
   </React.StrictMode>,
   document.getElementById("root")
 );

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 // Material Kit Imports
 import MKBox from "components/MKBox";
@@ -10,14 +10,24 @@ import { Grid } from "@mui/material";
 // Custom Component Imports
 import SendInputCard from "./SendInputCard";
 import SendInfoCard from "./SendInfoCard";
-import SelectToken from "./TokenSelector/TokenSelector";
+import TokenSelector from "./TokenSelector/TokenSelector";
 
 const Send = () => {
+  const [sourceNetwork, setSourceNetwork] = useState();
+  const [destinationNetwork, setDestinationNetwork] = useState();
+
+  const networkSelectHandler = (side, network) => {
+    side === "source"
+      ? setSourceNetwork(network)
+      : setDestinationNetwork(network);
+    console.log(sourceNetwork, destinationNetwork);
+  };
+
   return (
     <MKBox display="flex" flexDirection="column" justifyContent="center">
-      <SelectToken />
-      <SendInputCard id="Source" />
-      <SendInputCard id="Destination" />
+      <TokenSelector />
+      <SendInputCard id="Source" onNetworkSelect={networkSelectHandler} />
+      <SendInputCard id="Destination" onNetworkSelect={networkSelectHandler} />
       <SendInfoCard />
 
       <Grid container justifyContent="center">

@@ -39,6 +39,10 @@ export default {
       "&:after": {
         borderColor: info.main,
       },
+
+      "&::placeholder": {
+        color: "primary",
+      },
     },
   },
 };

@@ -13,8 +13,14 @@ const Dropdown = (props) => {
   const openDropdown = ({ currentTarget }) => setDropdown(currentTarget);
   const closeDropdown = () => setDropdown(null);
 
-  const outputLabels = props.outputs.labels;
+  const outputLabels = props.outputs.map((output) => output.label);
+  const outputIDs = props.outputs.map((output) => output.ID);
   const label = props.label;
+
+  const actionHandler = (event) => {
+    props.action();
+    closeDropdown();
+  };
 
   // Styles
   const iconStyles = {
@@ -45,7 +51,7 @@ const Dropdown = (props) => {
         onClose={closeDropdown}
       >
         {outputLabels.map((label) => (
-          <MenuItem key={Math.random()} onClick={closeDropdown}>
+          <MenuItem key={outputIDs} onClick={actionHandler}>
             {label}
           </MenuItem>
         ))}

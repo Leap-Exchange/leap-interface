@@ -14,16 +14,20 @@ import { fontSize, style } from "@mui/system";
 const tokenObject = require("../../../Tokenlist.json");
 const tokenList = tokenObject.tokens;
 
-const SelectToken = (props) => {
+const TokenSelector = (props) => {
+  const selectedNetwork = props.selectedNetwork;
   const [showModal, setShowModal] = useState(false);
   const [selectedToken, setSelectedToken] = useState();
   const toggleModal = () => setShowModal((prevState) => !prevState);
 
   const tokenSelectHandler = (token) => {
     setSelectedToken(token);
-    console.log(selectedToken);
     toggleModal();
   };
+
+  // const filteredTokenList = tokenList.filter(
+  //   (token) => token.chainID == selectedNetwork.chainID
+  // );
 
   const styles = {
     root: {
@@ -37,7 +41,8 @@ const SelectToken = (props) => {
       justifyContent: "space-evenly",
     },
     typography: {
-      mx: 2,
+      ml: 1.5,
+      fontSize: 13,
     },
   };
 
@@ -78,4 +83,4 @@ const SelectToken = (props) => {
   );
 };
 
-export default SelectToken;
+export default TokenSelector;

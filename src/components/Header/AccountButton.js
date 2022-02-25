@@ -20,16 +20,15 @@ const AccountButton = (props) => {
   const width = props.isSmallScreen ? 6 : 4;
 
   const [showModal, setShowModal] = useState(false);
+  const [activateError, setActivateError] = useState("");
   const toggleModal = () => setShowModal((prevState) => !prevState);
 
-  const { activateBrowserWallet, account } = useEthers();
+  const { activateBrowserWallet, activate, account } = useEthers();
   const etherBalance = useEtherBalance(account);
 
-  function connectWalletHandler() {
+  const connectWalletHandler = async (event) => {
     activateBrowserWallet();
-  }
-
-  console.log(account);
+  };
 
   const styles = {
     root: {

@@ -55,10 +55,7 @@ const SendInputCard = (props) => {
         </MKTypography>
       </Grid>
       <Grid item display="flex" sx={styles.gridItem}>
-        <NetworkSelector
-          onNetworkSelect={props.onNetworkSelect}
-          id={props.id}
-        />
+        <NetworkSelector id={props.id} />
         <Input
           placeholder="0.0"
           value={input}

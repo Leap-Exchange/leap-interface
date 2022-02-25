@@ -8,7 +8,11 @@ import MKButton from "components/MKButton";
 import { useEthers } from "@usedapp/core";
 
 const ModalContent = (props) => {
-  const { activateBrowserWallet, account } = useEthers();
+  const { deactivate, account } = useEthers();
+
+  const disconnectWalletHandler = (event) => {
+    deactivate();
+  };
   return (
     <Fragment>
       <MKTypography display="flex" fontWeight="bold" variant="button">
@@ -23,6 +27,13 @@ const ModalContent = (props) => {
         account.length
       )}
           `}</MKTypography>
+      <MKButton
+        variant="gradient"
+        color="primary"
+        onClick={disconnectWalletHandler}
+      >
+        disconnect
+      </MKButton>
     </Fragment>
   );
 };

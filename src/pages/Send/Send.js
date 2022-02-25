@@ -13,21 +13,11 @@ import SendInfoCard from "./SendInfoCard";
 import TokenSelector from "./TokenSelector/TokenSelector";
 
 const Send = () => {
-  const [sourceNetwork, setSourceNetwork] = useState();
-  const [destinationNetwork, setDestinationNetwork] = useState();
-
-  const networkSelectHandler = (side, network) => {
-    side === "source"
-      ? setSourceNetwork(network)
-      : setDestinationNetwork(network);
-    console.log(sourceNetwork, destinationNetwork);
-  };
-
   return (
     <MKBox display="flex" flexDirection="column" justifyContent="center">
       <TokenSelector />
-      <SendInputCard id="Source" onNetworkSelect={networkSelectHandler} />
-      <SendInputCard id="Destination" onNetworkSelect={networkSelectHandler} />
+      <SendInputCard id="Source" />
+      <SendInputCard id="Destination" />
       <SendInfoCard />
 
       <Grid container justifyContent="center">

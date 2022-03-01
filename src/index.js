@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { DAppProvider } from "@usedapp/core";
@@ -10,7 +11,9 @@ ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <DAppProvider config={{}}>
-        <App />
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
       </DAppProvider>
     </Provider>
   </React.StrictMode>,

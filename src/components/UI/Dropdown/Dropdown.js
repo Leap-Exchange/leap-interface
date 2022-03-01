@@ -1,7 +1,7 @@
 import { useState, Fragment } from "react";
 
 // Material Kit imports
-import MKButton from "components/MKButton";
+import MKButton from "components/MKComponents/MKButton";
 
 // @mui material components
 import { Menu, MenuItem } from "@mui/material";
@@ -9,17 +9,16 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 const Dropdown = (props) => {
   const [dropdown, setDropdown] = useState(null);
-
+  const [selectedIndex, setSelectedIndex] = useState(0);
   const openDropdown = ({ currentTarget }) => setDropdown(currentTarget);
   const closeDropdown = () => setDropdown(null);
 
-  const outputLabels = props.outputs.map((output) => output.label);
-  const outputIDs = props.outputs.map((output) => output.ID);
-  const label = props.label;
+  const { outputOptions, label, action } = props;
 
-  const actionHandler = (event) => {
-    props.action();
+  const actionHandler = (event, index, option) => {
+    setSelectedIndex(index);
     closeDropdown();
+    action(event, option);
   };
 
   // Styles
@@ -50,9 +49,13 @@ const Dropdown = (props) => {
         open={Boolean(dropdown)}
         onClose={closeDropdown}
       >
-        {outputLabels.map((label) => (
-          <MenuItem key={outputIDs} onClick={actionHandler}>
-            {label}
+        {outputOptions.map((option, index) => (
+          <MenuItem
+            key={option.id}
+            onClick={(event) => actionHandler(event, index, option)}
+            selected={index === selectedIndex}
+          >
+            {option.name}
           </MenuItem>
         ))}
       </Menu>

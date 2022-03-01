@@ -1,16 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = { selectedToken: undefined };
+const initialState = { selectedToken: { send: {}, liquidity: {} } };
 
 export const tokenInputSlice = createSlice({
   name: "tokenInput",
   initialState,
   reducers: {
     changeSelectedToken(state, action) {
-      state.selectedToken = action.payload;
-    },
-    returnUID(state, action) {
-      return `${action.payload.address}_${action.payload.chainID}`;
+      if (action.payload.page === "send") {
+        state.selectedToken.send = action.payload.token;
+      } else {
+        state.selectedToken.liquidity = action.payload.token;
+      }
     },
   },
 });

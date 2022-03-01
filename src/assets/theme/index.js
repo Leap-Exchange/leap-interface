@@ -143,7 +143,7 @@ const themeObj = {
     MuiSelect: { ...select },
     MuiFormControlLabel: { ...formControlLabel },
     MuiFormLabel: { ...formLabel },
-    MuiCheckbox: { ...checkbox },
+    // MuiCheckbox: { ...checkbox },
     MuiRadio: { ...radio },
     MuiAutocomplete: { ...autocomplete },
     MuiPopover: { ...popover },

@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { themeActions } from "Store/ThemeSlice";
 
 // Material Kit Imports
-import MKButton from "components/MKButton";
+import MKButton from "components/MKComponents/MKButton";
 
 // Mui Imports
 import SettingsIcon from "@mui/icons-material/Settings";
@@ -37,7 +37,7 @@ const Settings = (props) => {
         circular
         sx={styles.button}
       >
-        {lightMode ? <LightModeIcon /> : <DarkModeIcon />}
+        {themeMode === "light" ? <LightModeIcon /> : <DarkModeIcon />}
       </MKButton>
       <MKButton
         variant="text"

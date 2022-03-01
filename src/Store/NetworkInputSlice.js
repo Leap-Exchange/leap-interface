@@ -1,24 +1,24 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  selectedSourceNetwork: {},
-  selectedDestinationNetwork: {},
-  sourceNetworkIsSelected: false,
-  destinationNetworkIsSelected: false,
+  selectedNetworks: {
+    send: { source: {}, destination: {} },
+    liquidity: {},
+  },
 };
 
 export const networkInputSlice = createSlice({
   name: "networkInput",
   initialState,
   reducers: {
-    changeSelectedNetwork(state, action) {
-      if (action.payload.id === "Source") {
-        state.selectedSourceNetwork = action.payload.network;
-        state.sourceNetworkIsSelected = true;
-      } else {
-        state.selectedDestinationNetwork = action.payload.network;
-        state.destinationNetworkIsSelected = true;
-      }
+    changeSourceNetwork(state, action) {
+      state.selectedNetworks.send.source = action.payload.network;
+    },
+    changeDestinationNetwork(state, action) {
+      state.selectedNetworks.send.destination = action.payload.network;
+    },
+    changeLiquidityNetwork(state, action) {
+      state.selectedNetworks.liquidity = action.payload.network;
     },
   },
 });

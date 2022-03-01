@@ -24,8 +24,8 @@ import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 
 // Material Kit 2 React components
-import MKBox from "components/MKBox";
-import MKTypography from "components/MKTypography";
+import MKBox from "components/MKComponents/MKBox";
+import MKTypography from "components/MKComponents/MKTypography";
 
 function DefaultFooter({ content }) {
   const { brand, socials, menus, copyright } = content;
@@ -37,7 +37,13 @@ function DefaultFooter({ content }) {
           <Grid item xs={12} md={3} sx={{ ml: "auto", mb: 3 }}>
             <MKBox>
               <Link to={brand.route}>
-                <MKBox component="img" src={brand.image} alt={brand.name} maxWidth="2rem" mb={2} />
+                <MKBox
+                  component="img"
+                  src={brand.image}
+                  alt={brand.name}
+                  maxWidth="2rem"
+                  mb={2}
+                />
               </Link>
               <MKTypography variant="h6">{brand.name}</MKTypography>
             </MKBox>
@@ -72,7 +78,13 @@ function DefaultFooter({ content }) {
               </MKTypography>
               <MKBox component="ul" p={0} m={0} sx={{ listStyle: "none" }}>
                 {items.map(({ name, route, href }) => (
-                  <MKBox key={name} component="li" p={0} m={0} lineHeight={1.25}>
+                  <MKBox
+                    key={name}
+                    component="li"
+                    p={0}
+                    m={0}
+                    lineHeight={1.25}
+                  >
                     {href ? (
                       <MKTypography
                         component="a"
@@ -112,7 +124,9 @@ function DefaultFooter({ content }) {
 
 // Typechecking props for the DefaultFooter
 DefaultFooter.propTypes = {
-  content: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.object, PropTypes.array])).isRequired,
+  content: PropTypes.objectOf(
+    PropTypes.oneOfType([PropTypes.object, PropTypes.array])
+  ).isRequired,
 };
 
 export default DefaultFooter;

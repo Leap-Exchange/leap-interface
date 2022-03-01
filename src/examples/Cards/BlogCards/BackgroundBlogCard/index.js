@@ -25,8 +25,8 @@ import MuiLink from "@mui/material/Link";
 import Icon from "@mui/material/Icon";
 
 // Material Kit 2 React components
-import MKBox from "components/MKBox";
-import MKTypography from "components/MKTypography";
+import MKBox from "components/MKComponents/MKBox";
+import MKTypography from "components/MKComponents/MKTypography";
 
 function BackgroundBlogCard({ image, title, description, action }) {
   const cardActionStyles = {
@@ -48,8 +48,14 @@ function BackgroundBlogCard({ image, title, description, action }) {
   return (
     <Card
       sx={{
-        backgroundImage: ({ palette: { black }, functions: { linearGradient, rgba } }) =>
-          `${linearGradient(rgba(black.main, 0.5), rgba(black.main, 0.5))}, url(${image})`,
+        backgroundImage: ({
+          palette: { black },
+          functions: { linearGradient, rgba },
+        }) =>
+          `${linearGradient(
+            rgba(black.main, 0.5),
+            rgba(black.main, 0.5)
+          )}, url(${image})`,
         backgroundSize: "cover",
       }}
     >

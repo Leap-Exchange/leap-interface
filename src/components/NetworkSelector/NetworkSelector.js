@@ -3,12 +3,13 @@ import { useState, Fragment } from "react";
 // redux imports
 import { useSelector, useDispatch } from "react-redux";
 import { networkInputActions } from "Store/NetworkInputSlice";
+import { tokenInputActions } from "Store/TokenInputSlice";
 
 // Material kit imports
-import MKButton from "components/MKButton";
+import MKButton from "components/MKComponents/MKButton";
 
-// @mui material components
-import { Menu, MenuItem } from "@mui/material";
+// mui imports
+import { Menu, MenuItem, Typography } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 const NetworkSelector = (props) => {
@@ -16,17 +17,31 @@ const NetworkSelector = (props) => {
 
   // dropdown state
   const [dropdown, setDropdown] = useState(null);
-  const openDropdown = ({ currentTarget }) => setDropdown(currentTarget);
+  const openDropdown = ({ currentTarget }) => {
+    setDropdown(currentTarget);
+  };
   const closeDropdown = () => setDropdown(null);
 
-  // error/popover state
+  // token state
+  const selectedToken = useSelector((state) =>
+    props.page === "send"
+      ? state.tokenInput.selectedToken.send
+      : state.tokenInput.selectedToken.liquidity
+  );
 
   // network state
-  const selectedNetwork = useSelector((state) =>
-    props.id === "Source"
-      ? state.networkInput.selectedSourceNetwork
-      : state.networkInput.selectedDestinationNetwork
+  const { source: sourceNetwork, destination: destinationNetwork } =
+    useSelector((state) => state.networkInput.selectedNetworks.send);
+  const liquidityNetwork = useSelector(
+    (state) => state.networkInput.selectedNetworks.liquidity
   );
+  const selectedNetwork = useSelector((state) => {
+    if (props.page === "send") {
+      return props.id === "Source" ? sourceNetwork : destinationNetwork;
+    } else {
+      return liquidityNetwork;
+    }
+  });
 
   const networks = [
     { name: "Etherium Mainnet", ChainID: 1 },
@@ -37,12 +52,21 @@ const NetworkSelector = (props) => {
   // action handlers
   const actionHandler = (event, network) => {
     closeDropdown();
-    dispatch(
-      networkInputActions.changeSelectedNetwork({
-        network: network,
-        id: props.id,
-      })
-    );
+    props.page === "send"
+      ? dispatchSendState(network)
+      : dispatchLiquidityState(network);
+  };
+
+  const dispatchSendState = async (network) => {
+    if (props.id === "Source") {
+      dispatch(networkInputActions.changeSourceNetwork({ network }));
+    } else {
+      dispatch(networkInputActions.changeDestinationNetwork({ network }));
+    }
+  };
+
+  const dispatchLiquidityState = async (network) => {
+    dispatch(networkInputActions.changeLiquidityNetwork({ network }));
   };
 
   // Styles
@@ -63,9 +87,11 @@ const NetworkSelector = (props) => {
         variant={selectedNetwork.name ? "gradient" : "outlined"}
         color="primary"
         onClick={openDropdown}
-        sx={{ overflow: "hidden" }}
+        sx={{ width: "180px" }}
       >
-        {selectedNetwork.name ? selectedNetwork.name : "select a network"}
+        <Typography variant="inherit" sx={{ fontSize: 12 }}>
+          {selectedNetwork.name ? selectedNetwork.name : "Select a Network"}
+        </Typography>
         <ExpandMoreIcon sx={dropdownIconStyles} />
       </MKButton>
       <Menu
@@ -75,7 +101,7 @@ const NetworkSelector = (props) => {
       >
         {networks.map((network) => (
           <MenuItem
-            key={network.chainID}
+            key={network.ChainID}
             onClick={(event) => actionHandler(event, network)}
           >
             {network.name}

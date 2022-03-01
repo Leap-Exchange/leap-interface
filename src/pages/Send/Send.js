@@ -1,44 +1,27 @@
-import React, { useState } from "react";
+import React from "react";
 
 // Material Kit Imports
-import MKBox from "components/MKBox";
-import MKButton from "components/MKButton";
+import MKBox from "components/MKComponents/MKBox";
+import MKButton from "components/MKComponents/MKButton";
 
 // Mui Imports
 import { Grid } from "@mui/material";
 
 // Custom Component Imports
-import SendInputCard from "./SendInputCard";
-import SendInfoCard from "./SendInfoCard";
-import TokenSelector from "./TokenSelector/TokenSelector";
+import InputCard from "./InputCard";
+import InfoCard from "./InfoCard";
+import TokenInput from "./TokenInput";
+import SubmissionInput from "./SubmissionInput";
+import TokenSelector from "components/TokenSelector/TokenSelector";
 
 const Send = () => {
   return (
     <MKBox display="flex" flexDirection="column" justifyContent="center">
-      <TokenSelector />
-      <SendInputCard id="Source" />
-      <SendInputCard id="Destination" />
-      <SendInfoCard />
-
-      <Grid container justifyContent="center">
-        <Grid item sx={{ maxWidth: "md" }}>
-          <Grid
-            item
-            display="flex"
-            sx={{
-              p: 3,
-              justifyContent: "space-evenly",
-            }}
-          >
-            <MKButton color="primary" size="large" sx={{ width: 120, mx: 4 }}>
-              Approve
-            </MKButton>
-            <MKButton color="primary" size="large" sx={{ width: 120, mx: 4 }}>
-              Submit
-            </MKButton>
-          </Grid>
-        </Grid>
-      </Grid>
+      <TokenInput />
+      <InputCard id="Source" />
+      <InputCard id="Destination" />
+      <InfoCard />
+      <SubmissionInput />
     </MKBox>
   );
 };

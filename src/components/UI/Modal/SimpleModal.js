@@ -7,13 +7,19 @@ import Slide from "@mui/material/Slide";
 import CloseIcon from "@mui/icons-material/Close";
 
 // Material Kit Imports
-import MKBox from "components/MKBox";
-import MKButton from "components/MKButton";
-import MKTypography from "components/MKTypography";
+import MKBox from "components/MKComponents/MKBox";
+import MKButton from "components/MKComponents/MKButton";
+import MKTypography from "components/MKComponents/MKTypography";
 
 const SimpleModal = (props) => {
-  const { toggleModal, showModal, modalTitle, modalHeader, modalContent } =
-    props;
+  const {
+    toggleModal,
+    showModal,
+    modalTitle,
+    modalHeader,
+    modalFooter,
+    modalContent,
+  } = props;
   return (
     <Fragment>
       <Modal
@@ -55,13 +61,8 @@ const SimpleModal = (props) => {
             <Divider sx={{ my: 0 }} />
             <MKBox p={2}>{modalContent}</MKBox>
             <Divider sx={{ my: 0 }} />
-            <MKBox display="flex" justifyContent="space-between" p={1.5}>
-              <MKButton variant="gradient" color="dark" onClick={toggleModal}>
-                close
-              </MKButton>
-              <MKButton variant="gradient" color="info">
-                save changes
-              </MKButton>
+            <MKBox display="flex" p={1.5}>
+              {modalFooter ? modalFooter : <MKButton>close</MKButton>}
             </MKBox>
           </MKBox>
         </Slide>

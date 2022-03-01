@@ -4,7 +4,7 @@ import React from "react";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 
-const SendInputCard = (props) => {
+const Card = (props) => {
   const styles = {
     root: {
       py: 2,
@@ -29,4 +29,4 @@ const SendInputCard = (props) => {
   );
 };
 
-export default SendInputCard;
+export default Card;

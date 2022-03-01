@@ -1,14 +1,17 @@
 import React, { Fragment, useState } from "react";
 
+// redux imports
+import { useSelector } from "react-redux";
+
 // Material Kit Imports
-import MKBadge from "components/MKBadge";
-import MKButton from "components/MKButton";
+import MKBadge from "components/MKComponents/MKBadge";
+import MKButton from "components/MKComponents/MKButton";
 
 // Mui Imports
 import { Grid, Typography } from "@mui/material";
 
 // useDApp Imports
-import { useEthers, useEtherBalance } from "@usedapp/core";
+import { useEthers, useEtherBalance, useTokenBalance } from "@usedapp/core";
 import { formatEther } from "@ethersproject/units";
 
 // Custom Component Imports
@@ -17,19 +20,30 @@ import ModalHeader from "./ModalHeader";
 import ModalContent from "./ModalContent";
 
 const AccountButton = (props) => {
-  const width = props.isSmallScreen ? 6 : 4;
-
-  const [showModal, setShowModal] = useState(false);
+  // error state
   const [activateError, setActivateError] = useState("");
+
+  // modal state
+  const [showModal, setShowModal] = useState(false);
   const toggleModal = () => setShowModal((prevState) => !prevState);
 
-  const { activateBrowserWallet, activate, account } = useEthers();
+  // token state
+  const selectedToken = useSelector(
+    (state) => state.tokenInput.selectedToken.send
+  );
+
+  // account state
+  const { activateBrowserWallet, account } = useEthers();
+  const balance = useTokenBalance(selectedToken.address, account);
   const etherBalance = useEtherBalance(account);
 
+  // action handlers
   const connectWalletHandler = async (event) => {
     activateBrowserWallet();
   };
 
+  // styles
+  const width = props.isSmallScreen ? 6 : 4;
   const styles = {
     root: {
       p: 1,
@@ -54,13 +68,11 @@ const AccountButton = (props) => {
     >
       {account ? (
         <Fragment>
-          {etherBalance && (
+          {balance && (
             <MKBadge
               badgeContent={`${
-                etherBalance && parseFloat(formatEther(etherBalance)).toFixed(2)
-              }
-          
-          ETH`}
+                balance && parseFloat(formatEther(balance)).toFixed(2)
+              } ${selectedToken.symbol}`}
               variant="gradient"
               color="primary"
               container

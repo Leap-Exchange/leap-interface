@@ -1,4 +1,6 @@
 import { useState } from "react";
+// routing imports
+import { Routes, Route, Link } from "react-router-dom";
 
 // redux imports
 import { useSelector } from "react-redux";
@@ -13,6 +15,7 @@ import themeObj from "assets/theme";
 // Custom Component Imports
 import Header from "components/Header/Header";
 import Send from "pages/Send/Send";
+import Liquidity from "pages/Liquidity/Liquidity";
 
 function App() {
   const themeMode2 = useSelector((state) => state.theme.mode);
@@ -24,8 +27,13 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Header />
-      <Send />
+      <Routes>
+        <Route path="/" element={<Header />}>
+          <Route path="send" element={<Send />}></Route>
+          <Route path="liquidity" element={<Liquidity />}></Route>
+        </Route>
+      </Routes>
+      {/* <Send /> */}
     </ThemeProvider>
   );
 }

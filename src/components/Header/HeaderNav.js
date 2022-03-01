@@ -1,6 +1,7 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
-import React from "react";
+// routing imports
+import { Link, useLocation } from "react-router-dom";
 
 // Mui Imports
 import Grid from "@mui/material/Grid";
@@ -9,6 +10,7 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 
 function HeaderNav(props) {
+  const location = useLocation();
   const [activeTab, setActiveTab] = useState(0);
   const handleTabType = (event, newValue) => setActiveTab(newValue);
 
@@ -29,14 +31,26 @@ function HeaderNav(props) {
     <Grid item display="flex" xs={width} sx={styles.root}>
       <AppBar position="static" sx={styles.tab}>
         <Tabs
-          value={activeTab}
+          value={location.pathname}
           onChange={handleTabType}
           display="flex"
           sx={styles.tabs}
           textColor="primary"
         >
-          <Tab label="Send" sx={styles.tab} />
-          <Tab label="Liquidity" />
+          <Tab
+            disableRipple
+            label="Send"
+            value="/send"
+            component={Link}
+            to="/send"
+          />
+          <Tab
+            disableRipple
+            label="Liquidity"
+            value="/liquidity"
+            component={Link}
+            to="/liquidity"
+          />
         </Tabs>
       </AppBar>
     </Grid>

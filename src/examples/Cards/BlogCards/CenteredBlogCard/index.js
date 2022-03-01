@@ -24,9 +24,9 @@ import Card from "@mui/material/Card";
 import MuiLink from "@mui/material/Link";
 
 // Material Kit 2 React components
-import MKBox from "components/MKBox";
-import MKTypography from "components/MKTypography";
-import MKButton from "components/MKButton";
+import MKBox from "components/MKComponents/MKBox";
+import MKTypography from "components/MKComponents/MKTypography";
+import MKButton from "components/MKComponents/MKButton";
 
 function CenteredBlogCard({ image, title, description, action }) {
   return (
@@ -58,7 +58,12 @@ function CenteredBlogCard({ image, title, description, action }) {
         />
       </MKBox>
       <MKBox p={3} mt={-1} textAlign="center">
-        <MKTypography display="inline" variant="h5" textTransform="capitalize" fontWeight="regular">
+        <MKTypography
+          display="inline"
+          variant="h5"
+          textTransform="capitalize"
+          fontWeight="regular"
+        >
           {title}
         </MKTypography>
         <MKBox mt={1} mb={3}>

@@ -1,8 +1,8 @@
 import React, { Fragment } from "react";
 
 // Material Kit Imports
-import MKTypography from "components/MKTypography";
-import MKButton from "components/MKButton";
+import MKTypography from "components/MKComponents/MKTypography";
+import MKButton from "components/MKComponents/MKButton";
 
 // useDApp Imports
 import { useEthers } from "@usedapp/core";
@@ -20,7 +20,7 @@ const ModalContent = (props) => {
       </MKTypography>
       <MKTypography
         variant="h5"
-        color="darm.main"
+        color="dark.main"
         sx={{ m: 3 }}
       >{`${account.slice(0, 6)}...${account.slice(
         account.length - 4,

@@ -1,7 +1,7 @@
-import React from "react";
+import React, { Fragment } from "react";
 
 // Material Kit Imports
-import MKBox from "components/MKBox";
+import MKBox from "components/MKComponents/MKBox";
 
 // Mui Imports
 import Grid from "@mui/material/Grid";
@@ -12,6 +12,7 @@ import { useTheme } from "@mui/material/styles";
 import HeaderNav from "./HeaderNav";
 import AccountButton from "./AccountButton";
 import Settings from "./Settings";
+import { Outlet } from "react-router-dom";
 
 const Header = (props) => {
   const theme = useTheme();
@@ -26,17 +27,20 @@ const Header = (props) => {
   };
 
   return (
-    <MKBox display="flex" sx={styles.root}>
-      <Grid container>
-        {!isSmallScreen && <Settings isSmallScreen={isSmallScreen} />}
+    <Fragment>
+      <MKBox display="flex" sx={styles.root}>
+        <Grid container>
+          {!isSmallScreen && <Settings isSmallScreen={isSmallScreen} />}
 
-        <HeaderNav isSmallScreen={isSmallScreen} />
+          <HeaderNav isSmallScreen={isSmallScreen} />
 
-        {isSmallScreen && <Settings isSmallScreen={isSmallScreen} />}
+          {isSmallScreen && <Settings isSmallScreen={isSmallScreen} />}
 
-        <AccountButton isSmallScreen={isSmallScreen} />
-      </Grid>
-    </MKBox>
+          <AccountButton isSmallScreen={isSmallScreen} />
+        </Grid>
+      </MKBox>
+      <Outlet />
+    </Fragment>
   );
 };
 

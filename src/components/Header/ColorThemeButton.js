@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { themeActions } from "Store/ThemeSlice";
 
 // Material Kit Imports
-import MKButton from "components/MKButton";
+import MKButton from "components/MKComponents/MKButton";
 
 // Mui Imports
 import LightModeIcon from "@mui/icons-material/LightMode";

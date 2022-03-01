@@ -12,8 +12,13 @@ import InputAdornment from "@mui/material/InputAdornment";
 // Custom Component Imports
 import NetworkSelector from "components/NetworkSelector/NetworkSelector";
 import Card from "components/UI/Card/Card";
+import { useSelector } from "react-redux";
 
 const InputCard = (props) => {
+  const selectedToken = useSelector(
+    (state) => state.tokenInput.selectedToken.send
+  );
+
   const label = props.id === "Source" ? "From" : "To (Estimated)";
 
   const [input, setInput] = useState("");
@@ -60,7 +65,7 @@ const InputCard = (props) => {
                 textTransform="none"
                 sx={{ textAlign: "right", m: 0.5 }}
               >
-                ETH
+                {selectedToken.symbol ? selectedToken.symbol : "ETH"}
               </MKTypography>
             </InputAdornment>
           }

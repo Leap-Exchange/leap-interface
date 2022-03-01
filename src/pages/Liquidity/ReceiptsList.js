@@ -58,32 +58,7 @@ const ReceiptsList = (props) => {
 
   return (
     <Grid sx={{ width: "100%", p: 3, justifyContent: "center" }}>
-      <Box
-        component="span"
-        display="flex"
-        sx={{ justifyContent: "space-between" }}
-      >
-        <MKInput
-          placeholder="Max Amount"
-          value={maxAmount}
-          onChange={maxAmountHandler}
-          size="small"
-          sx={{ width: 160 }}
-          InputProps={{
-            endAdornment: (
-              <MKTypography
-                display="inline-flex"
-                variant="button"
-                fontWeight="bold"
-                color="text"
-                textTransform="none"
-                sx={{ textAlign: "right", m: 0.5 }}
-              >
-                ETH
-              </MKTypography>
-            ),
-          }}
-        />
+      <Box component="span" display="flex" sx={{ justifyContent: "flex-end" }}>
         <MKBox>
           {/* <Dropdown
             label={`max amount: ${maxAmount}`}

@@ -26,12 +26,6 @@ const InfoCard = (props) => {
             xxxxxx
           </Typography>
         </Grid>
-        <Grid item display="flex" sx={styles.textGrid}>
-          <Typography display="inline-flex">Estimated Received</Typography>
-          <Typography display="inline-flex" sx={{ textAlign: "right" }}>
-            xxxxxx
-          </Typography>
-        </Grid>
       </Grid>
     </Grid>
   );

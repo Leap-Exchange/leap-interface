@@ -10,7 +10,7 @@ To be added:
 
 ## Getting Started
 
-Installing Dependancies:
+### Installing Dependancies:
 
 ```bash
 npm install
@@ -20,7 +20,7 @@ or
 yarn install
 ```
 
-Starting App:
+### Starting App:
 
 ```bash
 npm start

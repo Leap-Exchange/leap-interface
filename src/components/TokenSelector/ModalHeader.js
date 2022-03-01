@@ -4,7 +4,7 @@ import React from "react";
 import MKInput from "components/MKComponents/MKInput";
 
 const ModalHeader = () => {
-  return <MKInput type="search" label="Search Tokens" fullWidth />;
+  return <div></div>;
 };
 
 export default ModalHeader;

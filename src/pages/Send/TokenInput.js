@@ -39,7 +39,7 @@ const TokenInput = (props) => {
           justifyContent: "center",
         }}
       >
-        <Collapse in={err} unmountOnExit mountOnEnter sx={{}}>
+        <Collapse in={Boolean(err)} unmountOnExit mountOnEnter sx={{}}>
           <Alert
             severity="warning"
             action={

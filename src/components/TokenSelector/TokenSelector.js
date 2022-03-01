@@ -36,11 +36,11 @@ const TokenSelector = (props) => {
   const filteredTokenList = tokenList.filter((token) => {
     if (props.page === "send") {
       return (
-        token.chainId === sourceNetwork.ChainID &&
-        token.chainId === destinationNetwork.ChainID
+        token.chainId == sourceNetwork.chainId &&
+        token.chainId == destinationNetwork.chainId
       );
     } else {
-      return token.chainId === liquidityNetwork.ChainID;
+      return token.chainId == liquidityNetwork.chainId;
     }
   });
 
@@ -48,16 +48,17 @@ const TokenSelector = (props) => {
   const [showModal, setShowModal] = useState(false);
   const modalToBeMounted =
     props.page === "send"
-      ? sourceNetwork.name && destinationNetwork.name
-      : liquidityNetwork.name;
+      ? sourceNetwork.chainName && destinationNetwork.chainName
+      : liquidityNetwork.chainName;
   const toggleModal = () => {
     const pageIsSend = props.page === "send";
-    if (pageIsSend && (!sourceNetwork.name || !destinationNetwork.name)) {
-      console.log("ye");
+    if (
+      pageIsSend &&
+      (!sourceNetwork.chainName || !destinationNetwork.chainName)
+    ) {
       props.onErr("Please select a network");
       return;
     } else {
-      console.log("it worked");
       setShowModal((prevState) => !prevState);
       setError(false);
     }
@@ -77,20 +78,15 @@ const TokenSelector = (props) => {
   const checkTokenValid = async (page) => {
     const tokenIsValidOnSend =
       page === "send" &&
-      selectedToken.chainId === sourceNetwork.ChainID &&
-      selectedToken.chainId === destinationNetwork.ChainID;
+      selectedToken.chainId == sourceNetwork.chainId &&
+      selectedToken.chainId == destinationNetwork.chainId;
 
     const tokenIsValidOnLiquidity =
-      page === "liquidity" &&
-      selectedToken.chainId === liquidityNetwork.ChainID;
+      page === "liquidity" && selectedToken.chainId == liquidityNetwork.chainId;
 
     if (tokenIsValidOnSend) {
-      console.log(sourceNetwork, destinationNetwork, selectedToken);
-      console.log("token passed for send");
     } else if (tokenIsValidOnLiquidity) {
-      console.log("token is valid on liquidity");
     } else {
-      console.log(`token is invalid on ${page} `);
       dispatch(
         tokenInputActions.changeSelectedToken({ token: {}, page: page })
       );
@@ -125,7 +121,7 @@ const TokenSelector = (props) => {
         color="primary"
         onClick={toggleModal}
         sx={styles.button}
-        disabled={props.page === "liquidity" && !liquidityNetwork.name}
+        disabled={props.page === "liquidity" && !liquidityNetwork.chainName}
       >
         {selectedToken.name ? (
           <Fragment>
@@ -143,7 +139,6 @@ const TokenSelector = (props) => {
           toggleModal={toggleModal}
           showModal={showModal}
           modalTitle="Select a Token"
-          modalHeader={<ModalHeader />}
           modalContent={
             <ModalContent
               tokens={filteredTokenList}

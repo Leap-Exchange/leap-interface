@@ -23,7 +23,6 @@ const SubmissionInput = (props) => {
       mx: 4,
     },
   };
-
   // THIS IS COOKED BECAUSE WE DONT WANT TO PERFORM THE CALL WHENEVER THE COMPONENT IS RENDERED
   const sourceContractAddress = "";
   // const approve = useContractCall({

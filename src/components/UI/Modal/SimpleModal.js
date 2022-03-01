@@ -62,7 +62,17 @@ const SimpleModal = (props) => {
             <MKBox p={2}>{modalContent}</MKBox>
             <Divider sx={{ my: 0 }} />
             <MKBox display="flex" p={1.5}>
-              {modalFooter ? modalFooter : <MKButton>close</MKButton>}
+              {modalFooter ? (
+                modalFooter
+              ) : (
+                <MKButton
+                  variant="gradient"
+                  color="primary"
+                  onClick={toggleModal}
+                >
+                  close
+                </MKButton>
+              )}
             </MKBox>
           </MKBox>
         </Slide>

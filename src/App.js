@@ -1,6 +1,6 @@
 import { useState } from "react";
 // routing imports
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Navigate, Link, useLocation } from "react-router-dom";
 
 // redux imports
 import { useSelector } from "react-redux";
@@ -20,6 +20,7 @@ import Liquidity from "pages/Liquidity/Liquidity";
 function App() {
   const themeMode2 = useSelector((state) => state.theme.mode);
   const [themeMode, setThememMode] = useState("light");
+  const location = useLocation();
 
   themeObj.palette = { ...themeObj.palette, mode: themeMode2 };
   const theme = createTheme(themeObj);
@@ -27,6 +28,9 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
+      {location.pathname === "/" ? (
+        <Navigate to="/send" replace={true} />
+      ) : null}
       <Routes>
         <Route path="/" element={<Header />}>
           <Route path="send" element={<Send />}></Route>

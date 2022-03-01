@@ -39,15 +39,6 @@ const Settings = (props) => {
       >
         {themeMode === "light" ? <LightModeIcon /> : <DarkModeIcon />}
       </MKButton>
-      <MKButton
-        variant="text"
-        color="primary"
-        iconOnly
-        circular
-        sx={styles.button}
-      >
-        <SettingsIcon />
-      </MKButton>
     </Grid>
   );
 };
